@@ -22,14 +22,15 @@
                                     <template slot="title">
                                         History
                                     </template>
-                                    <MenuItem name="1-1">Option 1</MenuItem>
+                                    <MenuItem name="1-1">Option 11</MenuItem>
                                     <MenuItem name="1-2">Option 2</MenuItem>
                                     <MenuItem name="1-3">Option 3</MenuItem>
                                 </Submenu>
                             </Menu>
                         </Sider>
+                        <router-view></router-view>
                         <!-- <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
-                            <a href="baidu.com" target="_blank">Content</a>
+                            <h1>Hello world</h1>
                         </Content> -->
                     </Layout>
                 </Content>
