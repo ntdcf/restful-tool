@@ -67,7 +67,7 @@ export default {
             ],
             requestContent:{
                 requstMethod: 1,
-                requstUrl:'http://www.baidu.com'
+                requstUrl:''
             },
             contentResponse: '',
             previewUrl: '',
