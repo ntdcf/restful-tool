@@ -1,5 +1,5 @@
 <template>
-  <!-- <div>
+  <div>
     <div class="title">Information</div>
     <div class="items">
       <div class="item">
@@ -27,23 +27,23 @@
         <div class="value">{{ platform }}</div>
       </div>
     </div>
-  </div> -->
+  </div>
 </template>
 
 <script>
-//   export default {
-//     data () {
-//       return {
-//         electron: process.versions['atom-shell'],
-//         name: this.$route.name,
-//         node: process.versions.node,
-//         path: this.$route.path,
-//         platform: require('os').platform(),
-//         vue: require('vue/package.json').version
-//       }
-//     }
-//   }
-// </script>
+  export default {
+    data () {
+      return {
+        electron: process.versions['atom-shell'],
+        name: this.$route.name,
+        node: process.versions.node,
+        path: this.$route.path,
+        platform: require('os').platform(),
+        vue: require('vue/package.json').version
+      }
+    }
+  }
+</script>
 
 <style scoped>
   .title {

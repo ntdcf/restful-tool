@@ -12,8 +12,8 @@
         <div :style="{padding: '5px', Height: '100%'}">
             <Tabs value="name1">
                 <TabPane label="Body" name="name1">
-                        <highlight-code lang="html">
-                            {{contentResponse}}
+                        <highlight-code :lang="this.responseContent.responseType">
+                            {{ contentResponse }}
                         </highlight-code>
                 </TabPane>
                 <!-- <TabPane label="Preview" name="name2">
@@ -23,7 +23,7 @@
                 </TabPane> -->
                 <TabPane label="Header" name="name3">
                     <highlight-code lang="json">
-                        {{contentHeaders}}
+                        {{ contentHeaders }}
                     </highlight-code>
                 </TabPane>
             </Tabs>
@@ -33,7 +33,6 @@
 </template>
 
 <script>
-import axios from "axios"
 import request from 'request'
 
 export default {
@@ -71,12 +70,15 @@ export default {
             },
             contentResponse: '',
             previewUrl: '',
-            contentHeaders: ''
+            contentHeaders: '',
+            responseContent: {
+                responseType: ''
+            }
         }
     },
     methods: {
         sendRequst() {
-            let method = this.requestMethods[this.requestContent.requstMethod - 1].type
+            var method = this.requestMethods[this.requestContent.requstMethod - 1].type
             this.previewUrl = this.requestContent.requstUrl
 
             // let options = {
@@ -89,11 +91,16 @@ export default {
             // }
 
             let options = this.formatDatas(method, this.previewUrl)
-            console.log(options)
+            
             request(options, (err, response, body) => {
-                this.contentResponse = body
                 this.contentHeaders = response.headers
-                // console.log(response)
+                try {
+                    this.contentResponse = JSON.parse(body)
+                    this.responseContent.responseType = 'json'
+                } catch (error) {
+                    this.responseContent.responseType = 'html'
+                    this.contentResponse = body
+                }    
             })
         },
 
